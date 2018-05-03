@@ -12,11 +12,39 @@
   <script src="assets/scripts/js/tween.js"></script>
 </head>
 <body>
-  
-  <div class="row">
-    <div class="container">
-        <p>My heart is beating for you</p>
-        <div id="heart"></div>
+  <div id="wrapper">
+    <div>
+      <div class="header">Dear soulmate, this is how <span class="you">you</span> mean to me</div>
+      <div class="controller">
+        <a class="btn btn--ghost" href="#section1" data-scroll>1</a>
+        <a class="btn btn--ghost" href="#section2" data-scroll>2</a>
+        <a class="btn btn--ghost" href="#section3" data-scroll>3</a>
+      </div>
+      <section class="section" id="section1">
+        <div class="row">
+          <div class="container">
+              <p>My heart is beating for you</p>
+              <div id="heart"></div>
+          </div>
+        </div>
+      </section>
+      <section class="section" id="section2">
+        <div class="row">
+          <div class="container">
+              <p>With you, I can take on the World!</p>
+              <div id="world"></div>
+          </div>
+        </div>
+      </section>
+      <section class="section" id="section3">
+        <div class="row">
+          <div class="container">
+              <p>Without you, i'm just a sad song...</p>
+              <div id="face"></div>
+              <div id="tear"></div>
+          </div>
+        </div>
+      </section>
     </div>
   </div>
 
@@ -25,9 +53,11 @@
       <p class="text-muted">&copy; 2018 Ryoichi</p>
     </div>
   </footer>
-
+  
   <script>
     var heart = $("#heart");
+    var world = $("#world");
+    var tear = $("#tear");
     
     function updateBoxPos(coords) {
       heart.css('transform', 'translate(' + coords.x + 'px, ' + coords.y + 'px)');
@@ -36,6 +66,14 @@
     function updateBoxWidth(size) {
       heart.css('width', size.width + 'px');
       heart.css('height', size.height + 'px');
+    }
+
+    function updateWorldRotation(angle) {
+      world.css({'transform' : 'rotate('+ angle +'deg)'});
+    }
+
+    function updateTearPos(coords) {
+      tear.css('transform', 'translate(' + coords.x + 'px, ' + coords.y + 'px)');
     }
   
     function animate(time) {
@@ -75,7 +113,53 @@
       .repeat(Infinity)
       .delay(200)
       .start();
+
+    var angle = {value: 0}
+    var tweenRotation = new TWEEN.Tween(angle)
+      .to({
+        value: 720
+      }, 2000)
+      .easing(TWEEN.Easing.Quadratic.InOut)
+      .repeat(Infinity)
+      .delay(400)
+      .onUpdate(function() {
+        updateWorldRotation(angle.value)
+      })
+      .start();
+
+    var tearPos = {x:0, y:0}
+    var tweeTear = new TWEEN.Tween(tearPos)
+      .to({
+        x: +0, y: +20
+      }, 1000)
+      .easing(TWEEN.Easing.Quadratic.In)
+      .repeat(Infinity)
+      .delay(500)
+      .onUpdate(function() {
+        updateTearPos(tearPos)
+      })
+      .start();
     
+  </script>
+  <script src='assets/scripts/js/sweet-scroll.min.js'></script>
+  <script>
+      var scroller = new SweetScroll({
+        vertical: false,
+        horizontal: true,
+      }, '#wrapper');
+  </script>
+  <script>
+    $('.btn--ghost').click(function() {
+      if($(this).attr('href') === '#section1') {
+        $('.you').css('color', '#be1830')
+      }
+      else if($(this).attr('href') === '#section2') {
+        $('.you').css('color', '#40a9de')
+      }
+      else {
+        $('.you').css('color', '#f7b239')
+      }
+    })
   </script>
 </body>
 </html>

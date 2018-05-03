@@ -1,4 +1,4 @@
-// out: ../css/main.css, compress: true, sourceMap: false
+// out: ../css/main.css
 
 
 body {
@@ -6,54 +6,281 @@ body {
 
   margin: 0;
   padding: 0;
-  background-color: #97a1a2;
-  background-image: url('https://github.com/msdos14/love/blob/master/assets/images/couple.jpg?raw=true');
-
-  background-size: cover;
-  background-position: center;
-
-  .row {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-
-    .container {
-      flex-shrink: 6;
-      flex-basis: 300px;
-      width: 300px;
-      height: 350px;
-      padding: 12px;
-
-      background-color: white;
-      box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-      transition: all 0.3s cubic-bezier(.25,.8,.25,1);
-
-      &:hover {
-        box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
-      }
-      
-      p {
-        font-family: 'Lovers Quarrel', cursive;
-        text-align: center;
-        font-size: 3em;
-      }
   
-      #heart {
-        background-image: url("https://github.com/msdos14/love/blob/master/assets/images/coeur.png?raw=true");
-        background-size: 100%;
-        background-repeat: no-repeat;
-        position: relative;
-        left: 100px;
-        width: 100px;
-        height: 100px;
+  #wrapper {
+    
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+
+    background-color: #97a1a2;
+    background-image: url('https://github.com/msdos14/love/blob/master/assets/images/couple.jpg?raw=true');
+    background-size: cover;
+    background-position: center;
+
+    &>div {
+      width: 300vw;
+      height: 98vh;
+    }
+
+    .header {
+      font-family: 'Lovers Quarrel', cursive;
+
+      width: 100%;
+      position: fixed;
+    
+      color: white;
+      text-align: center;
+      font-size: 6em;
+      top: 20px;
+
+      .you {
+        color: #be1830;
       }
     }
-  }
 
+    @media (max-width: 768px)  {
+      .header {
+        font-size: 4em;
+        top: 20px;
+      }
+    }
+
+    @media (max-width: 992px)  {
+      .header {
+        font-size: 5em;
+        top: 20px;
+      }
+    }
+
+    @media (max-width: 576px)  {
+      .header {
+        font-size: 4em;
+        top: 20px;
+      }
+    }
+
+    
+
+
+    .controller {
+      position: fixed;
+      bottom: 60px;
+      left: 50%;
+      z-index: 100;
+      width: auto;
+      height: auto;
+      margin-left: -75px;
+      font-size: 0;
+
+      .btn:nth-child(-n+3),
+      {
+        border-top-width: 1px;
+      }
+
+      .btn:nth-child(3n) {
+        border-right-width: 1px;
+      }
+
+      .btn {
+        display: inline-block;
+        padding: .8em 1.4em;
+        background: transparent;
+        border-radius: 0;
+        text-decoration: none;
+        text-align: center;
+        line-height: 1;
+        white-space: nowrap;
+        vertical-align: middle;
+        transition: all 180ms ease-out;
+        user-select: none;
+        font-weight: bold;
+        cursor: pointer;
+      }
+
+      .btn {
+        display: inline-block;
+        width: 50px;
+        height: 50px;
+        border-top-width: 0;
+        border-right-width: 0;
+        padding: 0;
+        font-size: 1rem;
+        line-height: 50px;
+      } 
+
+      .btn:focus {
+        outline: none;
+      }
+
+      .btn--ghost {
+        border: 1px solid #0f0f0f;
+        color: #0f0f0f;
+      }
+
+      .btn--ghost:hover {
+        background: #0f0f0f;
+        color: #fff;
+      }
+    }
+
+    .section {
+      float: left;
+      width: 33.33%;
+      height: 98vh;
+    }
+
+    #section1 {
+
+      .row {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        height: 98vh;
+        position: relative;
+    
+        .container {
+          flex-shrink: 6;
+          flex-basis: 300px;
+          width: 300px;
+          height: 350px;
+          padding: 12px;
+    
+          background-color: white;
+          box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+          transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    
+          &:hover {
+            box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+          }
+          
+          p {
+            font-family: 'Lovers Quarrel', cursive;
+            text-align: center;
+            font-size: 3em;
+          }
+      
+          #heart {
+            background-image: url("https://github.com/msdos14/love/blob/master/assets/images/coeur.png?raw=true");
+            background-size: 100%;
+            background-repeat: no-repeat;
+            position: relative;
+            left: 100px;
+            width: 100px;
+            height: 100px;
+          }
+        }
+      }
+    }
+
+    #section2 {
+
+      .row {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        height: 98vh;
+        position: relative;
+    
+        .container {
+          flex-shrink: 6;
+          flex-basis: 300px;
+          width: 300px;
+          height: 350px;
+          padding: 12px;
+    
+          background-color: white;
+          box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+          transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    
+          &:hover {
+            box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+          }
+          
+          p {
+            font-family: 'Lovers Quarrel', cursive;
+            text-align: center;
+            font-size: 3em;
+          }
+      
+          #world {
+            background-image: url("../../images/globe-icon.png");
+            background-size: 100%;
+            background-repeat: no-repeat;
+            position: relative;
+            left: 100px;
+            width: 100px;
+            height: 100px;
+          }
+        }
+      }
+    }
+
+    #section3 {
+
+      .row {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        height: 98vh;
+        position: relative;
+    
+        .container {
+          flex-shrink: 6;
+          flex-basis: 300px;
+          width: 300px;
+          height: 350px;
+          padding: 12px;
+    
+          background-color: white;
+          box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+          transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    
+          &:hover {
+            box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+          }
+          
+          p {
+            font-family: 'Lovers Quarrel', cursive;
+            text-align: center;
+            font-size: 3em;
+          }
+      
+          #face {
+            background-image: url("../../images/face.png");
+            background-size: 100%;
+            background-repeat: no-repeat;
+            position: relative;
+            left: 100px;
+            width: 100px;
+            height: 100px;
+          }
+
+          #tear {
+            background-image: url("../../images/tear.png");
+            background-size: 100%;
+            background-repeat: no-repeat;
+            position: relative;
+            left: 112px;
+            top: -55px;
+            width: 30px;
+            height: 30px;
+          }
+        }
+      }
+    }
+
+  }
+  
   .footer {
-    position: absolute;
+    position: fixed;
     bottom: 0;
     width: 100%;
     height: 60px; /* Set the fixed height of the footer here */
